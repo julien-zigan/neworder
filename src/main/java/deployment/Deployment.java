@@ -4,11 +4,14 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 
 import java.io.IOException;
 
+import static deployment.Extractor.getDuration;
+
 
 public class Deployment {
     private double rate;
-    private boolean travelcost;
+    private boolean travelPaid;
     private double travelcostRate;
+    private double travelCost;
     private String date;
     private double duration;
     private String language;
@@ -21,7 +24,7 @@ public class Deployment {
 
     public Deployment() {
         rate = 50.;
-        travelcost = true;
+        travelPaid = true;
         travelcostRate = 10.;
         compositor = new Compositor();
     }
@@ -56,12 +59,15 @@ public class Deployment {
         this.rate = rate;
     }
 
-    public boolean isTravelcost() {
-        return travelcost;
+    public boolean isTravelPaid() {
+        return travelPaid;
     }
 
-    public void setTravelcost(boolean travelcost) {
-        this.travelcost = travelcost;
+    public void setTravelPaid(boolean travelPaid) {
+        this.travelPaid = travelPaid;
+        double travelcost = isTravelPaid() ? getTravelcostRate() : 0.;
+        double total = getRate() * getDuration() + travelcost;
+        setTotal(total);
     }
 
     public double getTravelcostRate() {
@@ -70,6 +76,14 @@ public class Deployment {
 
     public void setTravelcostRate(double travelcostRate) {
         this.travelcostRate = travelcostRate;
+    }
+
+    public double getTravelCost() {
+        return travelCost;
+    }
+
+    public void setTravelCost(double travelCost) {
+        this.travelCost = travelCost;
     }
 
     public String getLanguage() {

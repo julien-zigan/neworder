@@ -20,7 +20,7 @@ class DeploymentTest {
         Deployment deployment = new Deployment(confirmation);
 
         assertEquals(50., deployment.getRate());
-        assertTrue(deployment.isTravelcost());
+        assertTrue(deployment.isTravelPaid());
         assertEquals(10., deployment.getTravelcostRate());
         assertEquals(DATE.getText(), deployment.getDate());
         assertEquals(DURATION.getNumber(), deployment.getDuration());

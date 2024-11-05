@@ -31,12 +31,12 @@ public class PDFInvoice extends PDDocument {
         AddressField.print(contentStream, contact);
     }
 
-    public void addInfoBlock(User address) throws IOException {
-        InfoBlock.print(contentStream, address);
+    public void addInfoBlock(User address, Invoice invoice) throws IOException {
+        InfoBlock.print(contentStream, address, invoice);
     }
 
-    public void addContent(User contact) throws IOException {
-        Content.print(contentStream, contact);
+    public void addContent(User contact, Invoice invoice) throws IOException {
+        Content.print(contentStream, contact, invoice);
     }
 
     public void closeContentStream() throws IOException {

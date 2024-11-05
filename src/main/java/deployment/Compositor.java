@@ -12,7 +12,7 @@ public class Compositor {
         String conf = getText(confirmation);
 
         double duration = getDuration(conf);
-        double travelcost = deployment.isTravelcost() ? deployment.getTravelcostRate() : 0;
+        double travelcost = deployment.isTravelPaid() ? deployment.getTravelcostRate() : 0.;
         double total = deployment.getRate() * duration + travelcost;
 
         deployment.setDate(getDate(conf));
@@ -20,6 +20,7 @@ public class Compositor {
         deployment.setLanguage(getLanguage(conf));
         deployment.setContractor(getContractor(conf));
         deployment.setClient(getClient(conf));
+        deployment.setTravelCost(travelcost);
         deployment.setTotal(total);
         deployment.setInvoiceAdress(getAddress(conf));
 

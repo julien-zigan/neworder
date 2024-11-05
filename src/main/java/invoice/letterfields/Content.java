@@ -1,6 +1,7 @@
 
 package invoice.letterfields;
 
+import invoice.Invoice;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
@@ -32,13 +33,13 @@ public class Content {
     static final float EINZEL_OFFSET_LEFT_ALIGN = 118F;
     static final float GESAMT_OFFSET_LEFT_ALIGN = 61F;
 
-    public static void print(PDPageContentStream cs, User user) throws IOException {
+    public static void print(PDPageContentStream cs, User user, Invoice invoice) throws IOException {
         cs.beginText();
         cs.setNonStrokingColor(Color.BLACK);
 
         cs.newLineAtOffset(POS_X, POS_Y - HEADING_LINE_HEIGHT);
         cs.setFont(BOLD, HEADING_FONT_SIZE);
-        cs.showText("Rechnung Nr. 12345"); //TODO create Invoice Class
+        cs.showText(String.format("Rechnung Nr. %s", invoice.getInvoiceNr())); //TODO create Invoice Class
 
         cs.newLineAtOffset(0, - HEADING_LINE_HEIGHT);
         cs.setFont(FONT, FONT_SIZE);
@@ -98,18 +99,18 @@ public class Content {
         cs.setFont(BOLD, FONT_SIZE);
         cs.showText(placeholerBezeichnung);
 
-        String placeholderMenge = "5 Std";
+        String placeholderMenge = String.format("%.1f Std", invoice.getDeployment().getDuration());
         float placeholderMengeWidth = (FONT.getStringWidth(placeholderMenge) / 1000.0f) * FONT_SIZE;
         cs.newLineAtOffset(MENGE_OFFSET_LEFT_ALIGN - placeholderMengeWidth, 0);
         cs.setFont(FONT, FONT_SIZE);
         cs.showText(placeholderMenge);
 
-        String placeholderEinzel = "50,00";
+        String placeholderEinzel = String.format(" %.2f", invoice.getDeployment().getRate());
         float placeholderEinzelWidth = (FONT.getStringWidth(placeholderEinzel) / 1000.0f) * FONT_SIZE;
         cs.newLineAtOffset(EINZEL_OFFSET_LEFT_ALIGN + placeholderMengeWidth - placeholderEinzelWidth, 0);
         cs.showText(placeholderEinzel);
 
-        String placeholderGesamt = "250,00";
+        String placeholderGesamt = String.format("%.2f", invoice.getDeployment().getRate() * invoice.getDeployment().getDuration());
         float placeholderGesamtWidth = (FONT.getStringWidth(placeholderGesamt) / 1000.0f) * FONT_SIZE;
         cs.newLineAtOffset(POS_X
                 + WIDTH
@@ -125,27 +126,33 @@ public class Content {
         cs.newLineAtOffset(BEZEICHNUNG_OFFSET + placeholderGesamtWidth - lineWidth - 2F, - LINE_HEIGHT);
         cs.setNonStrokingColor(0.47F, 0.47F, 0.47F);
         cs.setFont(FONT, FONT_SIZE);
-        String placeholerBezeichnungInfo = "Dolmetschsprache: XXXX";
+        String placeholerBezeichnungInfo = invoice.getDeployment().getLanguage();
         cs.showText(placeholerBezeichnungInfo);
 
         cs.newLineAtOffset(0, - LINE_HEIGHT);
         cs.setFont(FONT, FONT_SIZE);
-        String placeholerAuftraggeberName = "für: Pr. Dr. Imikitamo";
+        String placeholerAuftraggeberName = invoice.getDeployment().getContractor();
         cs.showText(placeholerAuftraggeberName);
 
         cs.newLineAtOffset(0, - LINE_HEIGHT);
         cs.setFont(FONT, FONT_SIZE);
-        String placeholerClient = "Kinderneurologie";
+        String placeholerClient = invoice.getDeployment().getClient();
         cs.showText(placeholerClient);
 
         cs.newLineAtOffset(0, - LINE_HEIGHT);
         cs.setFont(FONT, FONT_SIZE);
-        String placeholerDeploymentDate = "am " + "XX.XX.XXXX";
+        String placeholerDeploymentDate = String.format("am: %s", invoice.getDeployment().getDate());
         cs.showText(placeholerDeploymentDate);
 
         // Second Line
         cs.newLineAtOffset(-BEZEICHNUNG_OFFSET, - HEADING_LINE_HEIGHT);
-        cs.setNonStrokingColor(Color.BLACK);
+
+        if (invoice.getDeployment().isTravelPaid()){
+            cs.setNonStrokingColor(Color.BLACK);
+        } else {
+            cs.setNonStrokingColor(1F, 1F, 1F);
+        }
+
         cs.showText(String.valueOf(++invoicePosition));
 
         String anfahrt = "Anfahrt";
@@ -159,13 +166,12 @@ public class Content {
         cs.setFont(FONT, FONT_SIZE);
         cs.showText(pauschal);
 
-        String placeholderEinzelLine2 = "50,00";
+        String placeholderEinzelLine2 = String.format("%.2f", invoice.getDeployment().getTravelCost());
         float placeholderEinzelWidthLine2 = (FONT.getStringWidth(placeholderEinzelLine2) / 1000.0f) * FONT_SIZE;
         cs.newLineAtOffset(EINZEL_OFFSET_LEFT_ALIGN + pauschalWidth - placeholderEinzelWidthLine2, 0);
         cs.showText(placeholderEinzelLine2);
 
-        String placeholderGesamtLine2 = "50,00";
-        float placeholderGesamtWidthLine2 = (FONT.getStringWidth(placeholderGesamtLine2) / 1000.0f) * FONT_SIZE;
+        float placeholderGesamtWidthLine2 = (FONT.getStringWidth(placeholderEinzelLine2) / 1000.0f) * FONT_SIZE;
         cs.newLineAtOffset(POS_X
                 + WIDTH
                 - BEZEICHNUNG_OFFSET
@@ -175,16 +181,17 @@ public class Content {
                 - placeholderGesamtWidthLine2
                 - placeholderGesamtWidthLine2
                 - 4F, 0);
-        cs.showText(placeholderGesamtLine2);
+        cs.showText(placeholderEinzelLine2);
 
         //Total
+        cs.setNonStrokingColor(Color.BLACK);
         String totalLine = "_".repeat((numberOfUnderscores - 2) / 2);
         float totalLineWidth = (FONT.getStringWidth(totalLine) / 1000.0f) * FONT_SIZE;
         cs.newLineAtOffset(placeholderGesamtWidthLine2 - totalLineWidth, - HEADING_LINE_HEIGHT);
         cs.setFont(BOLD, FONT_SIZE);
         cs.showText(totalLine);
 
-        String total = "€ 300,00";
+        String total = String.format("€ %.2f", invoice.getDeployment().getTotal());
         float totalWidth = (FONT.getStringWidth(total) / 1000.0f) * FONT_SIZE;
         cs.newLineAtOffset(totalLineWidth - totalWidth, - LINE_HEIGHT);
         cs.setFont(BOLD, FONT_SIZE);

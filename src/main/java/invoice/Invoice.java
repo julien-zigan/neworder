@@ -16,7 +16,7 @@ public class Invoice {
         invoiceNr = InvoiceNrGenerator.generate();
         date = LocalDate.now();
         this.deployment = deployment;
-        path = String.format("./invoices/%s-%d", date.toString(),invoiceNr);
+        path = String.format("./invoices/%s-%d.pdf", date.toString(),invoiceNr);
     }
 
     public int getInvoiceNr() {

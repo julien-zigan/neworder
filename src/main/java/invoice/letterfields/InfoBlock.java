@@ -1,5 +1,6 @@
 package invoice.letterfields;
 
+import invoice.Invoice;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
@@ -21,13 +22,13 @@ public class InfoBlock {
     static final PDType1Font BOLD = new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD);
     static final PDType1Font OBLIQUE = new PDType1Font(Standard14Fonts.FontName.HELVETICA_OBLIQUE);
 
-    public static void print(PDPageContentStream cs, User user) throws IOException {
+    public static void print(PDPageContentStream cs, User user, Invoice invoice) throws IOException {
         cs.beginText();
         cs.setNonStrokingColor(Color.BLACK);
 
         cs.newLineAtOffset(POS_X, POS_Y - LINE_HEIGHT);
         cs.setFont(FONT, FONT_SIZE);
-        cs.showText("Rechnungsnr. 1234566");
+        cs.showText(String.format("Rechnungsnr. %d", invoice.getInvoiceNr()));
 
         cs.newLineAtOffset(0, -(LINE_HEIGHT));
         String emptyLine = "";

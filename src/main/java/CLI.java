@@ -1,5 +1,7 @@
 import deployment.Deployment;
 import invoice.Invoice;
+import invoice.PDFInvoice;
+import invoice.PDFInvoiceGenerator;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import persistence.Database;
@@ -17,7 +19,12 @@ public class CLI {
         PDDocument confirmation = Loader.loadPDF(file);
 
         Deployment deployment = new Deployment(confirmation);
+        deployment.setTravelPaid(false);
         Invoice invoice = new Invoice(deployment);
+
+        PDFInvoice pdfInvoice = PDFInvoiceGenerator.generate(user, invoice);
+        Database.add(invoice);
+        pdfInvoice.save(new File(invoice.getPath()));
 
     }
 
