@@ -1,17 +1,17 @@
-package invoice.letterfields;
+package invoice;
 
 import deployment.Deployment;
-import invoice.PDFInvoice;
 import user.User;
 
 import java.io.IOException;
 
 public class PDFInvoiceGenerator {
-    public static PDFInvoice generate(User user, Deployment deployment) throws IOException {
+    public static PDFInvoice generate(User user, Invoice invoice) throws IOException {
         PDFInvoice pdfInvoice = new PDFInvoice();
         pdfInvoice.addFoldingMarks();
         pdfInvoice.addReturnInfo(user);
-        pdfInvoice.addAddressField(deployment.getInvoiceAdress());
+        pdfInvoice.addAddressField(invoice.getDeployment().getInvoiceAdress());
+        pdfInvoice.addInfoBlock(user);
         pdfInvoice.addContent(user);
         pdfInvoice.closeContentStream();
 
