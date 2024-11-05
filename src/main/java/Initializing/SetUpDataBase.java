@@ -70,14 +70,12 @@ public class SetUpDataBase {
                                 invoiceNr INTEGER,
                                 path TEXT
                                 );
-                            INSERT INTO invoice (invoiceNr, path)
-                                values (0, 'empty');
                             """;
             statement.executeUpdate(sql);
             statement.close();
 
         } catch (Exception e) {
-            System.err.println(e.getMessage() + "inSetUpInvoicTable");
+            System.err.println(e.getMessage() + "inSetUpInvoiceTable");
         }
     }
 

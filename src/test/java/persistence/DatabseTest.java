@@ -6,33 +6,20 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.*;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class DatabseTest {
 
     @Test
-    void testAdd() throws Exception {
+    void testAdd() {
         Deployment deployment = new Deployment();
-        Invoice invoice = new Invoice(deployment);
-        //int idBefore = queryId();
 
-        Database.add(invoice);
-        //int idAfter = queryId();
+        Invoice invoice1 = new Invoice(deployment);
+        Database.add(invoice1);
 
-        //System.out.println("before: " + idBefore);
-        //System.out.println("after: " + idAfter);
-    }
+        Invoice invoice2 = new Invoice(deployment);
+        Database.add(invoice2);
 
-    private int queryId() throws Exception {
-        int id;
-
-        Connection connection = SQLiteHelper.getConnection();
-        Statement statement = connection.createStatement();
-        String sql = """
-                        SELECT MAX(id) FROM invoice
-                        """;
-        ResultSet rs = statement.executeQuery(sql);
-        id = rs.getInt(1);
-        statement.close();
-
-        return id;
+        assertEquals(invoice1.getInvoiceNr() + 1, invoice2.getInvoiceNr());
     }
 }

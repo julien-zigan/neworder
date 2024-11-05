@@ -1,5 +1,7 @@
 package invoice;
 
+import persistence.SQLiteHelper;
+
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -8,8 +10,7 @@ public class InvoiceNrGenerator {
         int id;
 
         try {
-            String url = "jdbc:sqlite:./jdeployments_data/jdeployments.db";
-            Connection connection = DriverManager.getConnection(url);
+            Connection connection = SQLiteHelper.getConnection();
             Statement statement = connection.createStatement();
             String sql = """
                             SELECT MAX(id) FROM invoice
@@ -22,8 +23,8 @@ public class InvoiceNrGenerator {
             id++;
 
 
-        } catch (SQLException se) {
-            System.err.println(se.getMessage());
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
             id = 0;
         }
 
