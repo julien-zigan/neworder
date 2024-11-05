@@ -44,7 +44,7 @@ class ExtractorTest {
     @Test
     void testGetDuration() {
         double extractedDuration = getDuration(CONFIRMATION.getText());
-        assertEquals(DURATION.getDuration(), extractedDuration);
+        assertEquals(DURATION.getNumber(), extractedDuration);
     }
 
     @Test

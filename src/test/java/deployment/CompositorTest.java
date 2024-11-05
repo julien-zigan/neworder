@@ -22,7 +22,7 @@ class CompositorTest {
         compositor.compose(deployment, confirmation);
 
         assertEquals(DATE.getText(), deployment.getDate());
-        assertEquals(DURATION.getDuration(), deployment.getDuration());
+        assertEquals(DURATION.getNumber(), deployment.getDuration());
         assertEquals(LANGUAGE.getText(), deployment.getLanguage());
         assertEquals(CONTRACTOR.getText(), deployment.getContractor());
         assertEquals(CLIENT.getText(), deployment.getClient());

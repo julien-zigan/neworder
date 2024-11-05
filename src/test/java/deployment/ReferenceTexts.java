@@ -42,24 +42,25 @@ public enum ReferenceTexts {
     LANGUAGE("Dolmetschsprache: Polnisch"),
     CONTRACTOR("Auftraggeber*in: Dähmlow, Hr. Dr."),
     CLIENT("Charité Virchow (CVK), Kinderklinik"),
-    DURATION(1.0);
+    DURATION(1.0),
+    TOTAL(60.);
 
     private String text;
-    private double duration;
+    private double number;
 
     ReferenceTexts(String text) {
         this.text = text;
     }
 
-    ReferenceTexts(double duration) {
-        this.duration = duration;
+    ReferenceTexts(double number) {
+        this.number = number;
     }
 
     public String getText() {
         return text;
     }
 
-    public double getDuration() {
-        return duration;
+    public double getNumber() {
+        return number;
     }
 }

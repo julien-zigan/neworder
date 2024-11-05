@@ -23,9 +23,10 @@ class DeploymentTest {
         assertTrue(deployment.isTravelcost());
         assertEquals(10., deployment.getTravelcostRate());
         assertEquals(DATE.getText(), deployment.getDate());
-        assertEquals(DURATION.getDuration(), deployment.getDuration());
+        assertEquals(DURATION.getNumber(), deployment.getDuration());
         assertEquals(LANGUAGE.getText(), deployment.getLanguage());
         assertEquals(CONTRACTOR.getText(), deployment.getContractor());
         assertEquals(CLIENT.getText(), deployment.getClient());
+        assertEquals(60., deployment.getTotal());
     }
 }

@@ -14,6 +14,7 @@ public class Deployment {
     private String language;
     private String contractor;
     private String client;
+    private double total;
 
     private Compositor compositor;
 
@@ -94,4 +95,11 @@ public class Deployment {
         this.client = client;
     }
 
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
 }
