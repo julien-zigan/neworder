@@ -21,6 +21,7 @@ public class Compositor {
         deployment.setContractor(getContractor(conf));
         deployment.setClient(getClient(conf));
         deployment.setTotal(total);
+        deployment.setInvoiceAdress(getAddress(conf));
 
     }
 }

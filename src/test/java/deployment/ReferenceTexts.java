@@ -42,6 +42,7 @@ public enum ReferenceTexts {
     LANGUAGE("Dolmetschsprache: Polnisch"),
     CONTRACTOR("Auftraggeber*in: Dähmlow, Hr. Dr."),
     CLIENT("Charité Virchow (CVK), Kinderklinik"),
+    INVOICE_ADDRESS("Charité, Finanz- und Rechnungswesen, Zentraler Rechnungseingang, \r\nHindenburgdamm 30, 12200 Berlin"),
     DURATION(1.0),
     TOTAL(60.);
 

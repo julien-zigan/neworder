@@ -27,6 +27,7 @@ class DeploymentTest {
         assertEquals(LANGUAGE.getText(), deployment.getLanguage());
         assertEquals(CONTRACTOR.getText(), deployment.getContractor());
         assertEquals(CLIENT.getText(), deployment.getClient());
-        assertEquals(60., deployment.getTotal());
+        assertEquals(TOTAL.getNumber(), deployment.getTotal());
+        assertEquals(INVOICE_ADDRESS.getText(), deployment.getInvoiceAdress());
     }
 }

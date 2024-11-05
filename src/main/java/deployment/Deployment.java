@@ -15,6 +15,7 @@ public class Deployment {
     private String contractor;
     private String client;
     private double total;
+    private String invoiceAdress;
 
     private Compositor compositor;
 
@@ -102,4 +103,13 @@ public class Deployment {
     public void setTotal(double total) {
         this.total = total;
     }
+
+    public String getInvoiceAdress() {
+        return invoiceAdress;
+    }
+
+    public void setInvoiceAdress(String invoiceAdress) {
+        this.invoiceAdress = invoiceAdress;
+    }
+
 }
