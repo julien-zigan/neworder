@@ -1,7 +1,6 @@
-package invoice;
+package core.invoice;
 
-import deployment.Deployment;
-import user.User;
+import core.user.User;
 
 import java.io.IOException;
 

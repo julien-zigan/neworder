@@ -1,5 +1,7 @@
 package deployment;
 
+import core.deployment.Compositor;
+import core.deployment.Deployment;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.junit.jupiter.api.Test;

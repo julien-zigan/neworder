@@ -1,6 +1,8 @@
 package invoice;
 
-import deployment.Deployment;
+import core.deployment.Deployment;
+import core.invoice.Invoice;
+import core.invoice.InvoiceNrGenerator;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

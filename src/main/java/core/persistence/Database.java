@@ -1,7 +1,7 @@
-package persistence;
+package core.persistence;
 
-import invoice.Invoice;
-import user.User;
+import core.invoice.Invoice;
+import core.user.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

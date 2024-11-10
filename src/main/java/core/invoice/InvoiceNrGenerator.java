@@ -1,6 +1,6 @@
-package invoice;
+package core.invoice;
 
-import persistence.SQLiteHelper;
+import core.persistence.SQLiteHelper;
 
 import java.sql.*;
 import java.time.LocalDate;

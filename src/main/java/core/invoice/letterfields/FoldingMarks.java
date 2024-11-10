@@ -1,5 +1,5 @@
 
-package invoice.letterfields;
+package core.invoice.letterfields;
 
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;

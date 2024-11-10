@@ -1,11 +1,9 @@
-package Initializing;
+package core.Initializing;
 
-import persistence.SQLiteHelper;
+import core.persistence.SQLiteHelper;
 
 import java.io.File;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SetUpDataBase {

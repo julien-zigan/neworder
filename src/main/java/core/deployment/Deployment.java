@@ -1,10 +1,8 @@
-package deployment;
+package core.deployment;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 
 import java.io.IOException;
-
-import static deployment.Extractor.getDuration;
 
 
 public class Deployment {

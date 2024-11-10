@@ -1,11 +1,13 @@
-import deployment.Deployment;
-import invoice.Invoice;
-import invoice.PDFInvoice;
-import invoice.PDFInvoiceGenerator;
+package core;
+
+import core.deployment.Deployment;
+import core.invoice.Invoice;
+import core.invoice.PDFInvoice;
+import core.invoice.PDFInvoiceGenerator;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import persistence.Database;
-import user.User;
+import core.persistence.Database;
+import core.user.User;
 
 import java.io.File;
 
@@ -19,7 +21,7 @@ public class CLI {
         PDDocument confirmation = Loader.loadPDF(file);
 
         Deployment deployment = new Deployment(confirmation);
-        deployment.setTravelPaid(false);
+       // deployment.setTravelPaid(false);
         Invoice invoice = new Invoice(deployment);
 
         PDFInvoice pdfInvoice = PDFInvoiceGenerator.generate(user, invoice);

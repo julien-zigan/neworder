@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 
-import static deployment.Extractor.*;
+import static core.deployment.Extractor.*;
 import static deployment.ReferenceTexts.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

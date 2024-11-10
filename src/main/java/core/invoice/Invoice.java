@@ -1,8 +1,7 @@
-package invoice;
+package core.invoice;
 
-import deployment.Deployment;
+import core.deployment.Deployment;
 
-import java.sql.*;
 import java.time.LocalDate;
 
 

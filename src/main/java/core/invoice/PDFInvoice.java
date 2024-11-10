@@ -1,12 +1,12 @@
-package invoice;
+package core.invoice;
 
-import deployment.Deployment;
+import core.invoice.letterfields.*;
 import invoice.letterfields.*;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import user.User;
+import core.user.User;
 
 import java.io.IOException;
 

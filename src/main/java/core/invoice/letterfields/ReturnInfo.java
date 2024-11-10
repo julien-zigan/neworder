@@ -1,9 +1,9 @@
-package invoice.letterfields;
+package core.invoice.letterfields;
 
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
-import user.User;
+import core.user.User;
 
 import java.io.IOException;
 

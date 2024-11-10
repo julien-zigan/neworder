@@ -1,9 +1,10 @@
 package persistence;
 
-import deployment.Deployment;
-import invoice.Invoice;
+import core.deployment.Deployment;
+import core.invoice.Invoice;
+import core.persistence.Database;
 import org.junit.jupiter.api.Test;
-import user.User;
+import core.user.User;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
