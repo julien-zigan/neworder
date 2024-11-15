@@ -46,6 +46,6 @@ public class UtilitiesFrame extends JInternalFrame {
             // user changed their mind
         }
         //add(fileChooser);
-        setVisible(true);
+        //setVisible(true);
     }
 }
