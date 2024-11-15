@@ -21,7 +21,7 @@ public class ConfirmationView {
 
     public static void setInvoice(Invoice invoice) throws IOException {
         ConfirmationView.invoice = invoice;
-        WorkbenchFrame.instance.drawInvoice();
+//        WorkbenchFrame.instance.drawInvoice();
     }
 
 
