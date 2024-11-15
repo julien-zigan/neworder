@@ -40,6 +40,5 @@ public class WorkbenchFrame extends JInternalFrame {
         JLabel ConfirmationLabel = new JLabel(confirmationImage);
         JScrollPane confirmationView = new JScrollPane(ConfirmationLabel);
         this.add(confirmationView);
-        this.repaint();
     }
 }
