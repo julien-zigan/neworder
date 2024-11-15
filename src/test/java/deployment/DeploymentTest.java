@@ -15,7 +15,7 @@ class DeploymentTest {
 
     @Test
     public void testConstructor() throws IOException {
-        File file = new File("X:\\neworder\\src\\test\\ressources\\TestConfirmation.pdf");
+        File file = new File("C:\\developer\\neworder\\src\\test\\ressources\\TestConfirmation.pdf");
         PDDocument confirmation = Loader.loadPDF(file);
 
         Deployment deployment = new Deployment(confirmation);

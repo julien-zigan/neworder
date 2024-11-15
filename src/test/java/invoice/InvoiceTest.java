@@ -17,7 +17,7 @@ class InvoiceTest {
         Deployment deployment = new Deployment();
         Invoice invoice = new Invoice(deployment);
         String expectedPath = String.format(
-                "./invoices/%s-%d",
+                "./invoices/%s-%d.pdf",
                 today.toString(),
                 InvoiceNrGenerator.generate()
         );

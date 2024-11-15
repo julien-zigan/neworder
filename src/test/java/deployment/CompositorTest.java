@@ -16,7 +16,7 @@ class CompositorTest {
 
     @Test
     void testCompose() throws IOException {
-        File file = new File("X:\\neworder\\src\\test\\ressources\\TestConfirmation.pdf");
+        File file = new File("C:\\developer\\neworder\\src\\test\\ressources\\TestConfirmation.pdf");
         PDDocument confirmation = Loader.loadPDF(file);
         Deployment deployment = new Deployment();
         Compositor compositor = new Compositor();

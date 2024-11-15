@@ -47,6 +47,7 @@ public class Deployment {
 
     public void setDuration(double duration) {
         this.duration = duration;
+        updateTotal();
     }
 
     public double getRate() {
@@ -55,6 +56,7 @@ public class Deployment {
 
     public void setRate(double rate) {
         this.rate = rate;
+        updateTotal();
     }
 
     public boolean isTravelPaid() {
@@ -63,9 +65,7 @@ public class Deployment {
 
     public void setTravelPaid(boolean travelPaid) {
         this.travelPaid = travelPaid;
-        double travelcost = isTravelPaid() ? getTravelcostRate() : 0.;
-        double total = getRate() * getDuration() + travelcost;
-        setTotal(total);
+        updateTotal();
     }
 
     public double getTravelcostRate() {
@@ -114,6 +114,11 @@ public class Deployment {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public void updateTotal() {
+        double travelcost = isTravelPaid() ? getTravelcostRate() : 0.;
+        total = getRate() * getDuration() + travelcost;
     }
 
     public String getInvoiceAdress() {
