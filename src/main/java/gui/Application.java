@@ -30,7 +30,7 @@ public class Application {
     /**
      * Create the application.
      */
-    public Application() {
+    public Application() throws Exception {
         User user;
         try {
             user = Database.loadUserData();
@@ -54,11 +54,11 @@ public class Application {
     /**
      * Initialize the contents of the frame.
      */
-    private void initialize(User user) {
+    private void initialize(User user) throws Exception {
         this.initialize();
     }
 
-    private void initialize() {
+    private void initialize() throws Exception {
         frmJerp = new JFrame();
         frmJerp.setTitle("Jerp");
         frmJerp.setBounds(100, 100, 900, 600);
@@ -70,9 +70,6 @@ public class Application {
         frmJerp.setLayout(gridbag);
 
 
-        UtilitiesFrame utilities = new UtilitiesFrame(gridbag);
-        frmJerp.add(utilities);
-
         WorkbenchFrame workbenchFrame = new WorkbenchFrame(gridbag);
         frmJerp.add(workbenchFrame);
 
@@ -82,6 +79,11 @@ public class Application {
         DeploymentConfirmationFrame deploymentConfirmationFrame =
                 new DeploymentConfirmationFrame(gridbag);
         frmJerp.add(deploymentConfirmationFrame);
+
+
+        UtilitiesFrame utilities = new UtilitiesFrame(gridbag);
+        frmJerp.add(utilities);
+
 
         frmJerp.setGlassPane(new JComponent() {
             @Override
