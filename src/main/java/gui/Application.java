@@ -1,5 +1,8 @@
 package gui;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import core.persistence.Database;
 import core.user.User;
 
@@ -15,6 +18,11 @@ public class Application {
      * Launch the application.
      */
     public static void main(String[] args) {
+//        FlatIntelliJLaf.setup();
+//        FlatLightLaf.setup();
+         FlatDarkLaf.setup();
+
+
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {

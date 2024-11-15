@@ -36,10 +36,13 @@ public class UtilitiesFrame extends JInternalFrame {
             // deployment.setTravelPaid(false);
             Invoice invoice = new Invoice(deployment);
 
+
             PDFInvoice pdfInvoice = PDFInvoiceGenerator.generate(user, invoice);
-            ConfirmationView.setInvoice(pdfInvoice);
-//            Database.add(invoice);
-//            pdfInvoice.save(new File(invoice.getPath()));
+            ConfirmationView.setPDFInvoice(pdfInvoice);
+            ConfirmationView.setInvoice(invoice);
+
+            Database.add(invoice);
+            pdfInvoice.save(new File(invoice.getPath()));
 
             // read  and/or display the file somehow. ....
         } else {
