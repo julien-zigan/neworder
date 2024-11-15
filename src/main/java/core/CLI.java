@@ -14,10 +14,9 @@ import java.io.File;
 public class CLI {
 
     public static void main(String[] args) throws Exception {
-        User user = new User();
-        Database.loadUserData(user);
+        User user = Database.loadUserData();
 
-        File file = new File("X:\\neworder\\src\\test\\ressources\\TestConfirmation.pdf");
+        File file = new File("C:\\developer\\neworder\\src\\test\\ressources\\TestConfirmation.pdf");
         PDDocument confirmation = Loader.loadPDF(file);
 
         Deployment deployment = new Deployment(confirmation);

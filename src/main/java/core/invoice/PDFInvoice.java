@@ -1,7 +1,7 @@
 package core.invoice;
 
 import core.invoice.letterfields.*;
-import invoice.letterfields.*;
+import core.invoice.letterfields.*;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;

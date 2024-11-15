@@ -61,7 +61,8 @@ public class Database {
         statement.close();
     }
 
-    public static void loadUserData(User user) throws Exception {
+    public static User loadUserData() throws Exception {
+        User user = new User();
         Connection connection = SQLiteHelper.getConnection();
         Statement statement = connection.createStatement();
         String sql = """
@@ -83,5 +84,7 @@ public class Database {
         user.setBankname(rs.getString("bankname"));
         user.setIban(rs.getString("iban"));
         user.setBic(rs.getString("bic"));
+
+        return user;
     }
 }

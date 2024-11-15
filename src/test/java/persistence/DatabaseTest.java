@@ -43,8 +43,7 @@ class DatabaseTest {
 
         Database.add(user);
 
-        User loadedUser = new User();
-        Database.loadUserData(loadedUser);
+        User loadedUser = Database.loadUserData();
 
         assertEquals(user.getCompany(), loadedUser.getCompany());
         assertEquals(user.getFirstName(), loadedUser.getFirstName());

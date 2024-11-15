@@ -17,7 +17,7 @@ class ExtractorTest {
     void testGetText() throws IOException {
         //String referenceText = Files.readString(Path.of("X:\\neworder\\src\\test\\ressources\\reference.txt"));
         String referenceText = CONFIRMATION.getText();
-        File pdfFile = new File("X:\\neworder\\src\\test\\ressources\\TestConfirmation.pdf");
+        File pdfFile = new File("C:\\developer\\neworder\\src\\test\\ressources\\TestConfirmation.pdf");
         PDDocument pdf = Loader.loadPDF(pdfFile);
 
         assertEquals(referenceText, getText(pdf));
