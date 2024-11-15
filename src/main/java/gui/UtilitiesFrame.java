@@ -24,6 +24,9 @@ public class UtilitiesFrame extends JInternalFrame {
         setExternalLayout(this, gridbag, 0, 0, 1, 3);
 
         JFileChooser fileChooser = new JFileChooser();
+        String home = System.getProperty("user.home");
+        File openHere = new File(home+"/Downloads/");
+        fileChooser.setCurrentDirectory(openHere);
 
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             User user = Database.loadUserData();
@@ -41,8 +44,8 @@ public class UtilitiesFrame extends JInternalFrame {
             ConfirmationView.setPDFInvoice(pdfInvoice);
             ConfirmationView.setInvoice(invoice);
 
-            Database.add(invoice);
-            pdfInvoice.save(new File(invoice.getPath()));
+//            Database.add(invoice);
+//            pdfInvoice.save(new File(invoice.getPath()));
 
             // read  and/or display the file somehow. ....
         } else {

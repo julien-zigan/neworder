@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class ConfirmationView {
     static File confirmation;
     static PDFInvoice pdfInvoice;
+    static Invoice invoice;
 
     public static Invoice getInvoice() {
         return invoice;
@@ -22,8 +23,6 @@ public class ConfirmationView {
         ConfirmationView.invoice = invoice;
         WorkbenchFrame.instance.drawInvoice();
     }
-
-    static Invoice invoice;
 
 
     public static PDFInvoice getPDFInvoice() {
